@@ -32,6 +32,8 @@ public class Simulator
     // A graphical view of the simulation.
     private static SimulatorView view;
     
+    private static boolean run;
+    
     private int width = 0;
     private int depth = 0;
     
@@ -155,6 +157,29 @@ public class Simulator
             }
         }
     }
+    
+    /**
+     * Methode om de applicatie te laten starten
+     */
+    
+    public static void runApplication(){
+    	Thread thread = new Thread(new Runnable(){
+    		int steps = SimulatorView.simulateValue1;
+    		
+    		public void run(){
+    			run = true;
+    			while(run && step < steps){
+    				simulateOneStep();
+    			}
+    		}
+    	});
+    	
+    	thread.start();
+    }
+	
+	static public void stop() {
+		run = false;
+	}
     
 }
 

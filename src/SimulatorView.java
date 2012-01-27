@@ -44,6 +44,9 @@ public class SimulatorView extends JPanel implements ActionListener
 	private JFrame frame;
 	private JPanel panel;
 	
+	
+	protected static int simulateValue1 = 0;
+	
 	/**
 	 * Create a view of the given width and height.
 	 * @param height1 The simulation's height.
@@ -141,14 +144,45 @@ public class SimulatorView extends JPanel implements ActionListener
 					System.out.println("Foutieve invoer");
 				}
 				else {
-					//Simulator.run();
+					simulateValue1 = Integer.parseInt(simulateValue);
+					Simulator.runApplication();
 				}
 			}
 		});
-
+		final JButton btnStop = new JButton("Stop");
+		btnStop.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				
+				if (btnStop.getActionCommand() == "Stop"){
+					Simulator.stop();
+				}
+			}
+		});
+		
+		final JButton btnReset = new JButton("Reset");
+		btnReset.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				if(btnReset.getActionCommand() == "Reset"){
+					Simulator.reset();
+				}
+			}
+		});
+		
+		JLabel emptyLabel = new JLabel();
+		JLabel emptyLabel1 = new JLabel();
+		
 		//Make frames
 		panel.add(btnStart1);
 		panel.add(btnStart100);
+		panel.add(emptyLabel1);
+		
+		panel.add(aantalStappen);
+		panel.add(simulateBtn);
+		panel.add(btnStop);
+		
+		panel.add(emptyLabel);
+		panel.add(btnReset);
+		
 		panel.setLayout(new GridLayout(0,1));
 
 		westborder.add(panel);
@@ -156,6 +190,8 @@ public class SimulatorView extends JPanel implements ActionListener
 
 		return westborder;
 	}
+	
+	
 
 	/**
 	 * Makes the menubar
