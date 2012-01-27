@@ -6,8 +6,8 @@ import java.util.Random;
  * A simple model of a fox.
  * Foxes age, move, eat rabbits, and die.
  * 
- * @author David J. Barnes and Michael Kolling
- * @version 2008.03.30
+ * @author Pim Vellinga
+ * @version 1.0
  */
 public class Fox extends Animal
 {

@@ -130,6 +130,21 @@ public class SimulatorView extends JPanel implements ActionListener
 					}
 				}
 				);
+		final JTextField aantalStappen = new JTextField();
+		JButton simulateBtn = new JButton("Simuleer");
+		
+		simulateBtn.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				String simulateValue = aantalStappen.getText();
+				
+				if(simulateValue.length() == 0 || Integer.parseInt(simulateValue) <= 10 ){
+					System.out.println("Foutieve invoer");
+				}
+				else {
+					//Simulator.run();
+				}
+			}
+		});
 
 		//Make frames
 		panel.add(btnStart1);
